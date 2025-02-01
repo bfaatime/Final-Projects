@@ -1,0 +1,90 @@
+.header {
+  background-color: white;  // First navbar background is now white
+  padding: 15px 0;          // Adjusted the top and bottom padding
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 20px;  // Added padding to the left and right of the navbar
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;  // Dark color for logo
+  text-transform: uppercase;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;  // Center the search bar
+  max-width: 500px;  // Adjust width as needed
+  margin: 0 20px;
+
+  input {
+    padding: 5px 10px;
+    border: 1px solid black;  // Set border to black
+    border-radius: 20px 0 0 20px;
+    font-size: 14px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);  // Set background color of the input to black
+    color: rgb(0, 0, 0);             // Set text color to white for contrast
+  }
+
+  button {
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+background: none;
+    &:hover {
+      color: rgba(0, 0, 0, 0.818);
+      background: none;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+
+  a {
+    color: #000000;
+    font-size: 25px;
+    color: #000000;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      color: rgb(0, 0, 0);
+    }
+  }
+}
+
+.navLinksSecond {
+  display: flex;
+  gap: 20px;
+  background-color: black;
+  padding: 10px 0;
+  margin: 0;
+  justify-content: center;
+
+  li {
+    list-style: none;
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: #8f8f8f;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.clothess {
+  .clothes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    img {
+      width: 50%;
+    }
+
+    .cart {
+      padding: 1rem 2rem;
+      background-color: rgb(0, 0, 0);  /* Siyah arka plan */
+      color: white;  /* Beyaz metin */
+      border: none;
+      transition: 0.6s;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(255, 255, 255);  /* Beyaz arka plan */
+        color: rgb(0, 0, 0);  /* Siyah metin */
+      }
+    }
+
+    /* Kartlara Border Ekleme */
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* Hafif siyah şeffaf border */
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Hafif siyah gölge */
+  }
+}
