@@ -58,13 +58,14 @@ const Header = () => {
                 {/* Second navbar for categories */}
                 <nav className={styles.navbarSecond}>
                     <ul className={styles.navLinksSecond}>
-                        <li><NavLink to={"/new"}>New</NavLink></li>
-                        <li><NavLink to={"/makeup"}>Makeup</NavLink></li>
+                        <li><NavLink to={"/"}>Home</NavLink></li>
+                        <li><NavLink to={"/brands"}>Brands</NavLink></li>
                         <li><NavLink to={"/skincare"}>Skincare</NavLink></li>
                         <li><NavLink to={"/fragrance"}>Fragrance</NavLink></li>
                         <li><NavLink to={"/hair"}>Hair</NavLink></li>
                         <li><NavLink to={"/gifts"}>Gifts</NavLink></li>
                         <li><NavLink to={"/sale"}>Sale</NavLink></li>
+                        <li><NavLink to={"/bestsellers"}>Bestsellers</NavLink></li>
                     </ul>
                 </nav>
             </div>
