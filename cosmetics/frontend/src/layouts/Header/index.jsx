@@ -26,7 +26,7 @@ const Header = () => {
             <div className="container">
                 <div className={styles.navbar}>
                     {/* Logo on the left */}
-                    <h2 className={styles.logo}>SEPHORA</h2>
+                    <h2 className={styles.logo}>Fatia</h2>
 
                     {/* Search form centered */}
                     <form className={styles.searchForm} onSubmit={handleSearchSubmit}>
@@ -59,6 +59,7 @@ const Header = () => {
                 <nav className={styles.navbarSecond}>
                     <ul className={styles.navLinksSecond}>
                         <li><NavLink to={"/"}>Home</NavLink></li>
+                        <li><NavLink to={"/shop"}>Shop</NavLink></li>
                         <li><NavLink to={"/brands"}>Brands</NavLink></li>
                         <li><NavLink to={"/skincare"}>Skincare</NavLink></li>
                         <li><NavLink to={"/fragrance"}>Fragrance</NavLink></li>

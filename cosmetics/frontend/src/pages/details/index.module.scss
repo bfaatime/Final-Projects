@@ -1,0 +1,136 @@
+.detailsPage {
+    padding: 40px 0; /* Added padding to top and bottom */
+    background-color: #f9f9f9;
+  
+    .container {
+      padding: 0 20px;  /* Added left and right padding to the container */
+      margin: 0 auto;   /* Centering the container */
+      max-width: 1200px; /* Set a max-width to avoid content being too stretched on large screens */
+    }
+  
+    .productImageGallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+  
+      .productImage {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        &:hover {
+          transform: scale(1.05); /* Slight zoom effect */
+        }
+      }
+  
+      .additionalImages {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+  
+        .additionalImage {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          &:hover {
+            transform: scale(1.1); /* Slight zoom effect */
+          }
+        }
+      }
+    }
+  
+    .productDetails {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+  
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+      }
+  
+      p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+  
+      .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff3e00; /* Sephora brand color */
+      }
+  
+      .buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+  
+        .addToCart {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          background-color: #ff3e00; /* Cart button background */
+          color: white;
+  
+          &:hover {
+            background-color: #d03500; /* Darker shade on hover */
+          }
+  
+          svg {
+            margin-right: 10px;
+          }
+        }
+  
+        .addToFavorites {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 24px;
+          color: #ff3e00;
+          transition: color 0.3s ease;
+  
+          &.added {
+            color: red; /* Change icon color to red when added to favorites */
+          }
+  
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  
+    /* Back to Home Button */
+    .backToHomeButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff; /* Blue color for the button */
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+    }
+  }
+  

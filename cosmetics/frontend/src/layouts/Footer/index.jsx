@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './index.module.scss';
-import { FaFacebook, FaInstagram, FaTwitter, FaPinterest } from 'react-icons/fa';
+import {  FaInstagram, FaPinterest, FaYoutube  } from 'react-icons/fa';
+import { AiFillTikTok } from "react-icons/ai";
+import { CiYoutube } from "react-icons/ci";
 import { MdLocationOn, MdEmail } from 'react-icons/md';
 
 const Footer = () => {
@@ -43,8 +45,8 @@ const Footer = () => {
         <div className={styles.contact}>
           <h3>Contact Us</h3>
           <ul>
-            <li><MdLocationOn /> 123 Sephora St., Paris, France</li>
-            <li><MdEmail /> info@sephora.com</li>
+            <li><MdLocationOn /> 123 Fatia St., Targovi, Baku</li>
+            <li><MdEmail /> info@fatiacosmeticshop.com</li>
           </ul>
         </div>
 
@@ -52,9 +54,9 @@ const Footer = () => {
         <div className={styles.socialMedia}>
           <h3>Follow Us</h3>
           <div className={styles.socialIcons}>
-            <a href="/"><FaFacebook /></a>
+            <a href="/"><AiFillTikTok /></a>
             <a href="/"><FaInstagram /></a>
-            <a href="/"><FaTwitter /></a>
+            <a href="/"><FaYoutube /></a>
             <a href="/"><FaPinterest /></a>
           </div>
         </div>
