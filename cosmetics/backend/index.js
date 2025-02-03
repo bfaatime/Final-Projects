@@ -1,22 +1,55 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 const productRouter = require("./routes/productRoute");
+const userRouter = require("./routes/userRoute"); 
 
-const DB_URL =
-  "mongodb+srv://fatimacbazmp202:fatima123@cluster0.b94na.mongodb.net/Cosmetics?retryWrites=true&w=majority&appName=Cluster0";
-const PASSWORD = "fatima123";
-const PORT = 8080;
+dotenv.config();
+
 const app = express();
 app.use(cors());
-
-
 app.use(express.json());
-app.use("/api/clothes", productRouter);
 
-mongoose.connect(DB_URL).then(() => {
-  console.log("Connected!");
-  app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+const DB_URL = process.env.DB_URL;
+const PORT = process.env.PORT || 8080;
+
+
+mongoose.connect(DB_URL)
+  .then(() => {
+    console.log("MongoDB Connected");
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => console.log(err));
+
+
+const authenticateToken = (req, res, next) => {
+  const token = req.headers["authorization"] && req.headers["authorization"].split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ message: "Access denied. No token provided." });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid token." });
+    }
+
+    req.user = user; 
+    next();
   });
+};
+
+
+app.use("/api/auth", userRouter);
+
+
+app.use("/api/clothes", authenticateToken, productRouter); 
+
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the backend!");
 });

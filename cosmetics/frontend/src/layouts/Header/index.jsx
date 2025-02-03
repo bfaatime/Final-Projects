@@ -14,10 +14,9 @@ const Header = () => {
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         if (searchQuery.trim() !== "") {
-            // Redirect to the shop page with the search query in the URL
             navigate(`/shop?search=${searchQuery}`);
         } else {
-            navigate("/shop");  // Default to shop page if no search query
+            navigate("/shop");
         }
     };
 
@@ -25,10 +24,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className="container">
                 <div className={styles.navbar}>
-                    {/* Logo on the left */}
                     <h2 className={styles.logo}>Fatia</h2>
-
-                    {/* Search form centered */}
                     <form className={styles.searchForm} onSubmit={handleSearchSubmit}>
                         <input
                             type="text"
@@ -40,13 +36,11 @@ const Header = () => {
                             <FaSearch />
                         </button>
                     </form>
-
-                    {/* Icons on the right */}
                     <div className={styles.icons}>
                         <NavLink to={"/wishlist"} className="favorites">
                             <MdFavoriteBorder size={25} />
                         </NavLink>
-                        <NavLink to={"/account"}>
+                        <NavLink to={"/login"}>
                             <SlUserFemale size={25} />
                         </NavLink>
                         <NavLink to={"/cart"}>
@@ -54,8 +48,6 @@ const Header = () => {
                         </NavLink>
                     </div>
                 </div>
-
-                {/* Second navbar for categories */}
                 <nav className={styles.navbarSecond}>
                     <ul className={styles.navLinksSecond}>
                         <li><NavLink to={"/"}>Home</NavLink></li>
@@ -67,6 +59,7 @@ const Header = () => {
                         <li><NavLink to={"/gifts"}>Gifts</NavLink></li>
                         <li><NavLink to={"/sale"}>Sale</NavLink></li>
                         <li><NavLink to={"/bestsellers"}>Bestsellers</NavLink></li>
+                        <li><NavLink to={"/register"}>Register</NavLink></li>
                     </ul>
                 </nav>
             </div>

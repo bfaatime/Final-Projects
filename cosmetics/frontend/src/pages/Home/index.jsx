@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../constants";
 import axios from "axios";
-
 import styles from "./index.module.scss";
 import Grid from '@mui/material/Grid2';
 import Rating from '@mui/material/Rating';
-
 import { LuShoppingCart } from "react-icons/lu";
 import { MdFavorite } from "react-icons/md";
 import TextField from '@mui/material/TextField';
@@ -13,7 +11,6 @@ import { Helmet } from "react-helmet-async";
 import { WishlistContext } from "../../context/wishlistContext";
 import { Link } from "react-router-dom";
 
-// Slider için eklenen state
 const images = [
     {
         src: "https://www.sephora.com/contentimages/2025-01-23-q1-fragrance-mbc-site-home-page-RWD-hero-banner-crossworld-gifts-us-image-only-release.jpg?imwidth=545",
@@ -46,7 +43,6 @@ const Home = () => {
     const [clothesCopy, setClothesCopy] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [index, setIndex] = useState(0);
-
     const { wishlist, toggleWishlist } = useContext(WishlistContext);
 
     const getClothes = async () => {
@@ -126,7 +122,7 @@ const Home = () => {
 
             {/* ÜRÜNLER */}
             <div className={styles.container}>
-                <div  style={{ margin: "1rem 0", display: "flex", justifyContent: "space-between" }}>
+                <div style={{ margin: "1rem 0", display: "flex", justifyContent: "space-between" }}>
                     <TextField
                         id="outlined-basic"
                         label="Search"
@@ -139,6 +135,7 @@ const Home = () => {
                         <option value="default">DEFAULT</option>
                     </select>
                 </div>
+
                 <div className={styles.clothess}>
                     <Grid container spacing={2}>
                         {clothes.length > 0 &&
@@ -151,16 +148,16 @@ const Home = () => {
                                                 <img src={w.imageUrl} alt={w.title} />
                                             </div>
                                             <h3 className={styles.title}>{w.title}</h3>
-                                            <p> {w.oldPrice ? <span className={styles["old-price"]}>$ {w.oldPrice}</span> : ""} $ {w.price}</p>
+                                            <p>{w.oldPrice ? <span className={styles["old-price"]}>$ {w.oldPrice}</span> : ""} $ {w.price}</p>
                                             <p><Rating name="half-rating" defaultValue={w.raiting} /></p>
                                             <button className={styles["cart"]}> <LuShoppingCart />
                                                 Add to Cart
                                             </button>
                                             <div style={{ display: "flex", gap: "1rem" }}>
                                                 <MdFavorite
-                                                  onClick={() => { toggleWishlist(w) }}
-                                                  className={wishlist.some((item) => item._id === w._id) ? styles.favActive : ''}
-                                                  style={{ position: "absolute", top: "10px", right: "10px" }} // Favori ikonu sağ üst köşeye yerleştirildi
+                                                    onClick={() => { toggleWishlist(w) }}
+                                                    className={wishlist.some((item) => item._id === w._id) ? styles.favActive : ''}
+                                                    style={{ position: "absolute", top: "10px", right: "10px" }} 
                                                 />
                                             </div>
                                         </Link>
