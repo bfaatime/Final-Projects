@@ -59,7 +59,6 @@ const Header = () => {
                         <li><NavLink to={"/gifts"}>Gifts</NavLink></li>
                         <li><NavLink to={"/sale"}>Sale</NavLink></li>
                         <li><NavLink to={"/bestsellers"}>Bestsellers</NavLink></li>
-                        <li><NavLink to={"/register"}>Register</NavLink></li>
                     </ul>
                 </nav>
             </div>
