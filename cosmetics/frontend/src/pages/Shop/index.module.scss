@@ -1,31 +1,110 @@
-.clothess {
-  .clothes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    
-    img {
-      width: 50%;
-    }
+.shop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
 
-    .cart {
-      padding: 1rem 2rem;
-      background-color: rgb(0, 0, 0);  /* Siyah arka plan */
-      color: white;  /* Beyaz metin */
-      border: none;
-      transition: 0.6s;
-      cursor: pointer;
-      &:hover {
-        background-color: rgb(255, 255, 255);  /* Beyaz arka plan */
-        color: rgb(0, 0, 0);  /* Siyah metin */
-      }
-    }
+.container {
+  cursor: pointer;
+  width: 90%;
+  max-width: 1200px;
+}
 
-    /* Kartlara Border Ekleme */
-    border: 2px solid rgba(0, 0, 0, 0.1);  /* Hafif siyah şeffaf border */
+.searchFilter {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.clothesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.clothesCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
     border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Hafif siyah gölge */
+  }
+
+  .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+
+    .oldPrice {
+      text-decoration: line-through;
+      color: red;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .cart {
+    padding: 0.8rem 1.5rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
+  .icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    color: #555;
+
+    svg {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    svg:hover {
+      color: black;
+    }
   }
 }

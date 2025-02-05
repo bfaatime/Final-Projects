@@ -1,136 +1,175 @@
 .detailsPage {
-    padding: 40px 0; /* Added padding to top and bottom */
-    background-color: #f9f9f9;
-  
-    .container {
-      padding: 0 20px;  /* Added left and right padding to the container */
-      margin: 0 auto;   /* Centering the container */
-      max-width: 1200px; /* Set a max-width to avoid content being too stretched on large screens */
-    }
-  
-    .productImageGallery {
+  padding: 40px 0;
+  background-color: #ffffff; // Beyaz arka plan
+
+  .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .productWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+  }
+
+  .productImageGallery {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
-  
+
       .productImage {
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease;
-        &:hover {
-          transform: scale(1.05); /* Slight zoom effect */
-        }
-      }
-  
-      .additionalImages {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-  
-        .additionalImage {
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: transform 0.3s ease;
+          width: 100%;
+          max-width: 400px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s;
+
           &:hover {
-            transform: scale(1.1); /* Slight zoom effect */
+              transform: scale(1.05);
           }
-        }
       }
-    }
-  
-    .productDetails {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-  
+  }
+
+  .productDetails {
+      flex: 1;
+
       h3 {
-        font-size: 24px;
-        font-weight: 600;
-        color: #333;
+          font-size: 28px;
+          font-weight: bold;
+          color: #000; // Siyah başlık
       }
-  
-      p {
-        color: #555;
-        font-size: 16px;
-        line-height: 1.6;
+
+      .rating {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: #666;
       }
-  
+
       .price {
-        font-size: 20px;
-        font-weight: bold;
-        color: #ff3e00; /* Sephora brand color */
+          font-size: 22px;
+          font-weight: bold;
+          color: #000; // Siyah fiyat
       }
-  
+
       .buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-  
-        .addToCart {
           display: flex;
-          align-items: center;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          background-color: #ff3e00; /* Cart button background */
-          color: white;
-  
-          &:hover {
-            background-color: #d03500; /* Darker shade on hover */
+          gap: 15px;
+
+          .addToCart {
+              display: flex;
+              align-items: center;
+              padding: 10px 20px;
+              border: 2px solid #000;
+              background-color: #000;
+              color: white;
+              font-size: 16px;
+              font-weight: 500;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+
+              &:hover {
+                  background-color: white;
+                  color: #000;
+              }
           }
-  
-          svg {
-            margin-right: 10px;
+
+          .addToFavorites {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: transparent;
+              border: none;
+              font-size: 24px;
+              cursor: pointer;
+              transition: color 0.3s ease;
+              color: #000;
+
+              &.added {
+                  color: red; // Favorilere eklenince kırmızı
+              }
+
+              &:hover {
+                  color: red;
+              }
           }
-        }
-  
-        .addToFavorites {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-          font-size: 24px;
-          color: #ff3e00;
-          transition: color 0.3s ease;
-  
-          &.added {
-            color: red; /* Change icon color to red when added to favorites */
-          }
-  
-          &:hover {
-            color: red;
-          }
-        }
       }
-    }
-  
-    /* Back to Home Button */
-    .backToHomeButton {
+  }
+
+  .productInfoTabs {
+      margin-top: 30px;
+
+      .tabs {
+          display: flex;
+          gap: 20px;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+
+          span {
+              padding-bottom: 5px;
+              border-bottom: 3px solid transparent;
+              color: #333;
+              transition: all 0.3s;
+
+              &.active {
+                  border-color: #000;
+                  color: #000;
+              }
+
+              &:hover {
+                  color: #000;
+              }
+          }
+      }
+
+      .tabContent {
+          margin-top: 20px;
+          font-size: 15px;
+          color: #555;
+      }
+
+      .customerReviews {
+          .review {
+              padding: 10px 0;
+              border-bottom: 1px solid #ddd;
+
+              strong {
+                  display: block;
+                  font-weight: bold;
+                  color: #000;
+              }
+
+              p {
+                  font-size: 14px;
+                  color: #666;
+              }
+          }
+      }
+  }
+
+  .backToHomeButton {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #007bff; /* Blue color for the button */
+      background-color: #000;
       color: white;
       font-size: 16px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-  
+
       &:hover {
-        background-color: #0056b3; /* Darker blue on hover */
+          background-color: white;
+          color: #000;
+          border: 2px solid #000;
       }
-    }
   }
-  
+}
