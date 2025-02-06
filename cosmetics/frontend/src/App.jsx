@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import Shop from './pages/Shop';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Basket from './pages/Basket';
 
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem('authToken') ? true : false);
@@ -30,6 +31,7 @@ function App() {
           <Route path='/shop' element={<Shop />} />
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/basket' element={<Basket />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

@@ -19,7 +19,7 @@ const images = [
         link: "#fragrance",
     },
     {
-        src: "https://www.sephora.com/contentimages/2025-01-26-january-hair-scalp-site-desktop-mobile-app-rwd-hero-banner-V1-us-2835-image-only.jpg?imwidth=545",
+        src: "https://www.sephora.com/contentimages/2025-02-02-slotting-trending-on-social-site-rwd-home-page-hero-banner-can_01.jpg?imwidth=545",
         title: "Hair Thinning Happens",
         text: "Let's do something about it with these effective picks.",
         link: "#haircare",
@@ -33,6 +33,12 @@ const images = [
     {
         src: "https://www.sephora.com/contentimages/2025-01-19-slotting-just-arrived-v3-site-rwd-home-page-hero-banner-english-US-CAN-handoff_01.jpg?imwidth=545",
         title: "In With The New",
+        text: "The latest beauty from the hottest brands.",
+        link: "#new",
+    },
+    {
+        src: "https://www.sephora.com/contentimages/2025-2-1-rare-beauty-soft-pinch-liquid-contour-site-desktop-home-page-rwd-hero-banner-1200x800-en-us-can.jpg?imwidth=545",
+        title: "New Rare Beauty by Selena Gomez",
         text: "The latest beauty from the hottest brands.",
         link: "#new",
     },

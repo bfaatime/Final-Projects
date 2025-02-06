@@ -43,7 +43,7 @@ const Header = () => {
                         <NavLink to={"/login"}>
                             <SlUserFemale size={25} />
                         </NavLink>
-                        <NavLink to={"/cart"}>
+                        <NavLink to={"/basket"}>
                             <CiShoppingBasket size={25} />
                         </NavLink>
                     </div>
