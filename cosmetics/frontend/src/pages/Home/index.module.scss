@@ -1,258 +1,211 @@
-// Genel renk ve font ayarları
-$primary-color:  black;
-$secondary-color: #333;
-$button-color:black;
-$font-family: 'Arial', sans-serif;
-
-// Slider Container
-.sliderContainer {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 450px;  // Slider'ın yüksekliği
-}
-
-.sliderWrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.slider {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.imageItem {
-    position: relative;
-    flex: 1;
-    min-width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .textOverlay {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        color: white;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            background-color: $button-color;
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-    }
-}
-
-// Slider Navigation Buttons
-.buttons {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 10;
-
-    button {
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 15px;
-        font-size: 2rem;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: 0.3s ease;
-
-        &:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-    }
-}
-
-// Ürünler ve Kartlar Container
+/* Genel Ayarlar */
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
-    margin-top: 2rem;
-}
-
-.clothess {
-    margin-top: 2rem;
-
-    .MuiGrid-root {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-// Card Component (Ürün Kartları)
-.clothes {
-    position: relative;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: translateY(-5px);
-    }
-
-    .cardContent {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        padding: 1rem;
-        height: 100%;
-    }
-
-    .cardImageLink {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1rem;
-
-        img {
-            max-width: 100%;
-            max-height: 200px;
-            object-fit: contain;
-        }
-    }
-
-    .title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        color: $secondary-color;
-    }
-
-    p {
-        font-size: 1rem;
-        color: $secondary-color;
-        margin: 0.5rem 0;
-    }
-
-    .old-price {
-        text-decoration: line-through;
-        color: gray;
-    }
-
-    .cart {
-        background-color: $button-color;
-        color: white;
-        padding: 10px;
-        width: 100%;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        border-radius: 5px;
-    }
-}
-
-// Wishlist Icon
-.favActive {
-    color: red;
-}
-
-// Search Box ve Filter Dropdown
-.search-container {
-    margin: 1rem 0;
+  }
+  
+  .searchFilter {
     display: flex;
     justify-content: space-between;
-}
-
-select {
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  .searchFilter select,
+  .searchFilter input {
     padding: 0.5rem;
-    margin-left: 1rem;
-    border-radius: 5px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     font-size: 1rem;
+  }
+  
+  .clothess {
+    margin-top: 2rem;
+  }
+  
+  /* Section 1 - Öne Çıkan Kartlar */
+  .section1 {
+    margin-bottom: 2rem;
+  }
+  
+  .cardContent {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .cardImageLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+  }
+  
+  .cardImageLink img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .cardImageLink:hover img {
+    transform: scale(1.1);
+  }
+  
+  .cardContent:hover .cardImageLink {
+    opacity: 0.8;
+  }
+  
+  /* Kart Düzeni */
+  .clothess .MuiGrid-item {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .clothesCard {
     background-color: #fff;
-}
-
-input[type="text"] {
-    padding: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .clothesCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 1rem 0;
+  }
+  
+  .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: #e74c3c;
+    margin-right: 0.5rem;
+  }
+  
+  .cart {
+    padding: 0.8rem 1.5rem;
+    background-color: #000;
+    color: white;
+    border: none;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-    .sliderContainer {
-        height: 300px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+  }
+  
+  .cart:hover {
+    background-color: #fff;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .favActive {
+    color: #e74c3c;
+  }
+  
+  .icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .MdFavorite,
+  .LuShoppingCart {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .MdFavorite:hover {
+    color: #e74c3c;
+  }
+  
+  .LuShoppingCart:hover {
+    color: #28a745;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 768px) {
+    .searchFilter {
+      flex-direction: column;
+      align-items: flex-start;
     }
-
-    .imageItem {
-        min-width: 100%;
+  
+    .clothesCard {
+      padding: 1rem;
     }
-
-    .buttons {
-        display: none;
+  
+    .title {
+      font-size: 1rem;
     }
-
-    .clothess {
-        margin-top: 1rem;
+  
+    .cart {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
     }
-
-    .clothes {
-        margin-bottom: 1rem;
+  
+    .icons {
+      font-size: 1.2rem;
     }
-
-    .cardImageLink img {
-        max-height: 150px;
+  
+    .cardImageLink {
+      height: 150px;
     }
-}
-
-@media (max-width: 480px) {
-    .sliderContainer {
-        height: 250px;
+  }
+  
+  @media (max-width: 480px) {
+    .searchFilter {
+      flex-direction: column;
+      align-items: flex-start;
     }
-
-    .cardImageLink img {
-        max-height: 130px;
+  
+    .clothesCard {
+      padding: 0.8rem;
     }
-
-    .buttons {
-        display: none;
+  
+    .title {
+      font-size: 0.9rem;
     }
-}
-
-// Büyük ekranlar için 5 kart sıralama
-@media (min-width: 1024px) {
-    .MuiGrid-root {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr); // 5 kart sıralama
-        gap: 2rem;
+  
+    .price {
+      font-size: 1rem;
     }
-
-    .cardImageLink img {
-        max-height: 250px;
+  
+    .cart {
+      width: 100%;
     }
-}
+  
+    .icons {
+      font-size: 1rem;
+    }
+  
+    .cardImageLink {
+      height: 120px;
+    }
+  }
+  

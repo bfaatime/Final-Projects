@@ -1,0 +1,38 @@
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .cardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .productImage {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .removeButton {
+    margin-left: auto;
+  }
+  
+  .totalPrice {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .checkoutButton {
+    margin-right: 10px;
+  }
+  
+  .clearButton {
+    margin-left: 10px;
+  }
+  
