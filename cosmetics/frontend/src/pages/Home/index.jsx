@@ -15,19 +15,19 @@ const images = [
     src: "https://www.sephora.com/contentimages/2025-01-23-q1-fragrance-mbc-site-home-page-RWD-hero-banner-crossworld-gifts-us-image-only-release.jpg?imwidth=545",
     title: "Valentine's Day Gifts",
     text: "The best beauty picks—perfect to give or get.",
-    link: "#fragrance",
+    link: "gifts", // category for search query
   },
   {
     src: "https://www.sephora.com/contentimages/2025-2-8-gisou-honey-gloss-ceramide-therapy-hair-mask-site-desktop-home-page-rwd-marketing-banner-1200x800-en-us-can-2834.jpg?imwidth=545",
     title: "New Gisou Hair Mask",
     text: "Hydrate dry, damaged strands with this honey-infused formula.",
-    link: "#gisou",
+    link: "hair", // category for search query
   },
   {
     src: "https://www.sephora.com/contentimages/2025-2-1-rare-beauty-soft-pinch-liquid-contour-site-desktop-home-page-rwd-hero-banner-1200x800-en-us-can.jpg?imwidth=545",
     title: "New Rare Beauty by Selena Gomez",
     text: "The latest beauty from the hottest brands.",
-    link: "#new",
+    link: "rare", // category for search query
   },
 ];
 
@@ -60,7 +60,12 @@ const Home = () => {
                 <div className={styles.cardText}>
                   <h3>{image.title}</h3>
                   <p>{image.text}</p>
-                  <a href={image.link} className={styles.shopNow}>SHOP NOW ▸</a>
+                  <Link 
+                    to={`/shop?search=${image.link}`} 
+                    className={styles.shopNow}
+                  >
+                    SHOP NOW ▸
+                  </Link>
                 </div>
               </div>
             </Grid>

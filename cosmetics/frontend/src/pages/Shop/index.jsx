@@ -18,12 +18,7 @@ const Shop = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Kullanıcının giriş yapıp yapmadığını kontrol eden fonksiyon
-  const isAuthenticated = () => {
-    return !!localStorage.getItem("userToken"); // Token varsa giriş yapmış demektir
-  };
-
-  // Ürünleri getir
+  // Fetch clothes data
   const getClothes = async () => {
     try {
       const res = await axios(`${BASE_URL}clothes`);
@@ -34,20 +29,24 @@ const Shop = () => {
     }
   };
 
-  // Arama sorgusuna göre filtreleme
-  const filteredClothes = clothes.filter((w) =>
-    w.title.toLowerCase().includes(searchQuery.toLowerCase().trim())
-  );
-
   useEffect(() => {
     getClothes();
     const query = new URLSearchParams(location.search).get("search");
     if (query) {
-      setSearchQuery(query);
+      setSearchQuery(query); // Set search query from URL
     }
   }, [location.search]);
 
-  // Fiyat sıralaması
+  // Filter clothes based on search query
+  const filteredClothes = clothes.filter((w) => {
+    const searchQueryLower = searchQuery.toLowerCase().trim();
+    return (
+      w.title.toLowerCase().includes(searchQueryLower) || // Search by title
+      (w.description && w.description.toLowerCase().includes(searchQueryLower)) // Search by description
+    );
+  });
+
+  // Price sorting
   const handleChange = (e) => {
     let sortedClothes;
     if (e.target.value === "asc") {
@@ -57,83 +56,57 @@ const Shop = () => {
     } else {
       sortedClothes = [...clothesCopy];
     }
-    setClothes([...sortedClothes]);
-  };
-
-  // Arama değişikliklerini yönetme
-  const handleSearchChange = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    navigate(`/shop?search=${query}`);
-  };
-
-  // Favori butonuna basıldığında çalışacak fonksiyon
-  const handleWishlistClick = (e, item) => {
-    e.stopPropagation(); // Kartın tıklanmasını engelle
-    if (!isAuthenticated()) {
-      navigate("/login"); // Giriş yapılmamışsa login sayfasına yönlendir
-    } else {
-      toggleWishlist(item); // Kullanıcı giriş yapmışsa wishlist'e ekle
-    }
+    setClothes(sortedClothes);
   };
 
   return (
-    <>
-      <div className={styles.shop}>
-        <div className={styles.container}>
-          <div className={styles.searchFilter}>
-            <TextField
-              id="outlined-basic"
-              label="Search"
-              variant="outlined"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-            <select onChange={handleChange}>
-              <option value="asc">Price Low to High</option>
-              <option value="desc">Price High to Low</option>
-              <option value="default">Default</option>
-            </select>
-          </div>
+    <div className={styles.shop}>
+      <div className={styles.container}>
+        <div className={styles.searchFilter}>
+          <TextField
+            id="outlined-basic"
+            label="Search"
+            variant="outlined"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <select onChange={handleChange}>
+            <option value="asc">Price Low to High</option>
+            <option value="desc">Price High to Low</option>
+            <option value="default">Default</option>
+          </select>
+        </div>
 
-          <div className={styles.clothesGrid}>
-            <Grid container spacing={2}>
-              {clothes.length > 0 &&
-                filteredClothes.map((w) => (
-                  <Grid item xs={12} sm={6} md={4} key={w._id}>
-                    <div
-                      className={styles.clothesCard}
-                      onClick={() => navigate(`/clothes/${w._id}`)}
-                    >
-                      <img src={w.imageUrl} alt={w.title} />
-                      <h3 className={styles.title}>{w.title}</h3>
-                      <p>
-                        {w.oldPrice ? (
-                          <span className={styles.oldPrice}>$ {w.oldPrice}</span>
-                        ) : (
-                          ""
-                        )}
-                        $ {w.price}
-                      </p>
-                      <Rating name="rating" defaultValue={w.rating} />
-                      <button
-                        className={styles.cart}
-                        onClick={(e) => e.stopPropagation()} // Kart tıklamasını engelle
-                      >
-                        <LuShoppingCart />
-                        Add to Cart
-                      </button>
-                      <FaRegHeart
-                        onClick={(e) => handleWishlistClick(e, w)}
-                      />
-                    </div>
-                  </Grid>
-                ))}
-            </Grid>
-          </div>
+        <div className={styles.clothesGrid}>
+          <Grid container spacing={2}>
+            {filteredClothes.length > 0 &&
+              filteredClothes.map((w) => (
+                <Grid item xs={12} sm={6} md={4} key={w._id}>
+                  <div
+                    className={styles.clothesCard}
+                    onClick={() => navigate(`/clothes/${w._id}`)}
+                  >
+                    <img src={w.imageUrl} alt={w.title} />
+                    <h3 className={styles.title}>{w.title}</h3>
+                    <p>
+                      {w.oldPrice && (
+                        <span className={styles.oldPrice}>$ {w.oldPrice}</span>
+                      )}
+                      $ {w.price}
+                    </p>
+                    <Rating name="rating" defaultValue={w.rating} />
+                    <button className={styles.cart}>
+                      <LuShoppingCart />
+                      Add to Cart
+                    </button>
+                    <FaRegHeart onClick={() => toggleWishlist(w)} />
+                  </div>
+                </Grid>
+              ))}
+          </Grid>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
