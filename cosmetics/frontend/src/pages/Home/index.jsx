@@ -15,7 +15,7 @@ const images = [
     src: "https://www.sephora.com/contentimages/2025-01-23-q1-fragrance-mbc-site-home-page-RWD-hero-banner-crossworld-gifts-us-image-only-release.jpg?imwidth=545",
     title: "Valentine's Day Gifts",
     text: "The best beauty picks—perfect to give or get.",
-    link: "gifts", // category for search query
+    link: "gift", // category for search query
   },
   {
     src: "https://www.sephora.com/contentimages/2025-2-8-gisou-honey-gloss-ceramide-therapy-hair-mask-site-desktop-home-page-rwd-marketing-banner-1200x800-en-us-can-2834.jpg?imwidth=545",

@@ -37,12 +37,13 @@ const Shop = () => {
     }
   }, [location.search]);
 
-  // Filter clothes based on search query
+  // Filter clothes based on search query (brand)
   const filteredClothes = clothes.filter((w) => {
     const searchQueryLower = searchQuery.toLowerCase().trim();
     return (
       w.title.toLowerCase().includes(searchQueryLower) || // Search by title
-      (w.description && w.description.toLowerCase().includes(searchQueryLower)) // Search by description
+      (w.description && w.description.toLowerCase().includes(searchQueryLower)) || // Search by description
+      (w.brand && w.brand.toLowerCase().includes(searchQueryLower)) // Search by brand
     );
   });
 

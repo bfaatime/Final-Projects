@@ -1,0 +1,43 @@
+.brandsContainer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .brandsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .brandCard {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .brandLogo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .brandCard p {
+    font-size: 18px;
+    color: #555;
+    font-weight: bold;
+  }
+  
