@@ -12,6 +12,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Basket from './pages/Basket';
 import Brands from './pages/Brands';
+import Fragrance from './pages/Fragrance';
+import Hair from './pages/Hair';
+import Gifts from './pages/Gifts';
+import Bestsellers from './pages/Bestsellers';
+import Skincare from './pages/Skincare';
 
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem('authToken') ? true : false);
@@ -31,6 +36,11 @@ function App() {
           <Route path='/wishlist' element={auth ? <Wishlist /> : <Login />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/brands' element={<Brands />} />
+          <Route path='/fragrance' element={<Fragrance />} />
+          <Route path='/hair' element={<Hair />} />
+          <Route path='/gifts' element={<Gifts />} />
+          <Route path='/bestsellers' element={<Bestsellers />} />
+          <Route path='/skincare' element={<Skincare />} />
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/basket' element={<Basket />} />

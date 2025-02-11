@@ -57,7 +57,6 @@ const Header = () => {
                         <li><NavLink to={"/fragrance"}>Fragrance</NavLink></li>
                         <li><NavLink to={"/hair"}>Hair</NavLink></li>
                         <li><NavLink to={"/gifts"}>Gifts</NavLink></li>
-                        <li><NavLink to={"/sale"}>Sale</NavLink></li>
                         <li><NavLink to={"/bestsellers"}>Bestsellers</NavLink></li>
                     </ul>
                 </nav>
