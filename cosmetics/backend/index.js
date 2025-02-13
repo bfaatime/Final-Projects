@@ -31,3 +31,4 @@ app.use("/api/clothes", productRouter);
 app.get("/", (req, res) => {
   res.send("Welcome to the backend!");
 });
+
