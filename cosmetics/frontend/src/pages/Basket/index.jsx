@@ -1,14 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useCart } from "../../context/cartContext"; // CartContext'ten sepete erişim
+import { useCart } from "../../context/cartContext";
 import { Button, Grid, Card, CardContent, Typography, IconButton } from "@mui/material";
-import { MdDelete } from "react-icons/md"; // Ürün silme ikonu
-
-import styles from "./index.module.scss"; // SCSS dosyasını ekleyebilirsiniz
+import { MdDelete } from "react-icons/md";
+import styles from "./index.module.scss";
+import { useNavigate } from "react-router-dom";  // Don't forget to import useNavigate
 
 const Basket = () => {
-  const { cart, removeFromCart, totalPrice, clearCart } = useCart(); // Sepet verilerine erişim
-  const navigate = useNavigate();
+  const { cart, removeFromCart, changeQuantity, totalPrice, clearCart } = useCart();
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const handleCheckout = () => {
     if (cart.length === 0) {
@@ -43,6 +42,13 @@ const Basket = () => {
                         $ {product.price}
                       </Typography>
                     </div>
+
+                    <div className={styles.quantityControl}>
+                      <button onClick={() => changeQuantity(product._id, -1)}>-</button>
+                      <span>{product.quantity}</span>
+                      <button onClick={() => changeQuantity(product._id, 1)}>+</button>
+                    </div>
+
                     <IconButton
                       color="error"
                       onClick={() => removeFromCart(product._id)}

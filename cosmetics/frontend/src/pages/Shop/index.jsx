@@ -9,14 +9,18 @@ import { LuShoppingCart } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import { WishlistContext } from "../../context/wishlistContext";
+import { useCart } from "../../context/cartContext";  // CartContext'i import ettik
 
 const Shop = () => {
   const [clothes, setClothes] = useState([]);
   const [clothesCopy, setClothesCopy] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
+  const { addToCart, cart } = useCart();  // Sepete ürün ekleme ve sepetteki ürünleri almak için
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [message, setMessage] = useState("");
 
   // Fetch clothes data
   const getClothes = async () => {
@@ -60,6 +64,22 @@ const Shop = () => {
     setClothes(sortedClothes);
   };
 
+  // Handle add to cart with quantity check
+  const handleAddToCart = (product) => {
+    const productInCart = cart.find((item) => item._id === product._id);
+    if (productInCart) {
+      if (productInCart.quantity < 5) {
+        addToCart({ ...product, quantity: productInCart.quantity + 1 });
+        setMessage("Item Added to Cart"); // Notification message
+        setTimeout(() => setMessage(""), 2000); // Remove message after 2 seconds
+      }
+    } else {
+      addToCart({ ...product, quantity: 1 });
+      setMessage("Item Added to Cart"); // Notification message
+      setTimeout(() => setMessage(""), 2000); // Remove message after 2 seconds
+    }
+  };
+
   return (
     <div className={styles.shop}>
       <div className={styles.container}>
@@ -78,6 +98,8 @@ const Shop = () => {
           </select>
         </div>
 
+        {message && <div className={styles.message}>{message}</div>} {/* Message display */}
+
         <div className={styles.clothesGrid}>
           <Grid container spacing={2}>
             {filteredClothes.length > 0 &&
@@ -85,7 +107,7 @@ const Shop = () => {
                 <Grid item xs={12} sm={6} md={4} key={w._id}>
                   <div
                     className={styles.clothesCard}
-                    onClick={() => navigate(`/clothes/${w._id}`)}
+                    onClick={() => navigate(`/clothes/${w._id}`)}  // Navigate fonksiyonu ile yönlendirme
                   >
                     <img src={w.imageUrl} alt={w.title} />
                     <h3 className={styles.title}>{w.title}</h3>
@@ -96,11 +118,24 @@ const Shop = () => {
                       $ {w.price}
                     </p>
                     <Rating name="rating" defaultValue={w.rating} />
-                    <button className={styles.cart}>
+                    <div className={styles.icons}>
+                      <FaRegHeart
+                        onClick={(e) => {
+                          e.stopPropagation();  // Propagation'ı durdur
+                          toggleWishlist(w);    // Wishlist'a ekle
+                        }}
+                      />
+                    </div>
+                    <button
+                      className={styles.cart}
+                      onClick={(e) => {
+                        e.stopPropagation();  // Propagation'ı durdur
+                        handleAddToCart(w);   // Sepete ekle
+                      }}
+                    >
                       <LuShoppingCart />
                       Add to Cart
                     </button>
-                    <FaRegHeart onClick={() => toggleWishlist(w)} />
                   </div>
                 </Grid>
               ))}

@@ -10,7 +10,6 @@ const Header = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
 
-    // Handle form submission and redirect to the shop page or results
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         if (searchQuery.trim() !== "") {

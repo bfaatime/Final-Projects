@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
-import Details from './pages/Details';
 import Add from './pages/Add';
 import Wishlist from './pages/Wishlist';
 import NotFound from './pages/NotFound';
@@ -17,6 +16,10 @@ import Hair from './pages/Hair';
 import Gifts from './pages/Gifts';
 import Bestsellers from './pages/Bestsellers';
 import Skincare from './pages/Skincare';
+import Checkout from './pages/checkout';
+import Details from './pages/details';
+import Success from './pages/Success';
+import Error from './pages/Error';
 
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem('authToken') ? true : false);
@@ -44,6 +47,9 @@ function App() {
           <Route path='/login' element={<Login setAuth={setAuth} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/basket' element={<Basket />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/error" element={<Error />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
