@@ -39,7 +39,7 @@ const Header = () => {
                         <NavLink to={"/wishlist"} className="favorites">
                             <MdFavoriteBorder size={25} />
                         </NavLink>
-                        <NavLink to={"/login"}>
+                        <NavLink to={"/add"}>
                             <SlUserFemale size={25} />
                         </NavLink>
                         <NavLink to={"/basket"}>
